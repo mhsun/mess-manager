@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 /*
  * demo
 */
-Route::get('/member/add','Bazarcontroller@add');
-Route::post('/member/add','Bazarcontroller@addMember');
+Route::get('/register','MemberController@add');
+Route::get('/member/add','MemberController@add');
+Route::post('/member/add','MemberController@addMember');
 

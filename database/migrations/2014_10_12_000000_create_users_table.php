@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->date('leave_date',50);
             $table->integer('status');
             $table->integer('user_type');
+            $table->date('created_at');
+            $table->date('updated_at');
             $table->rememberToken();
         });
     }
