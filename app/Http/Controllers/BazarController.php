@@ -6,5 +6,7 @@ use Illuminate\Http\Request;
 
 class BazarController extends Controller
 {
-    //
+    public function add() {
+        return view('admin.master');
+    }
 }
