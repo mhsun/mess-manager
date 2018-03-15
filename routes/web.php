@@ -22,5 +22,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 /*
  * demo
 */
-Route::get('/demo','Bazarcontroller@add');
+Route::get('/member/add','Bazarcontroller@add');
+Route::post('/member/add','Bazarcontroller@addMember');
 

@@ -1,4 +1,4 @@
 @include('admin.common.header')
 @include('admin.common.sidebar')
-@yield('admin.')
+@yield('main_content')
 @include('admin.common.footer')
