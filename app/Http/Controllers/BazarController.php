@@ -8,8 +8,6 @@ use App\User;
 use App\Http\Controllers\Auth;
 use Illuminate\Support\Facades\Session;
 
-//use DB;
-
 class BazarController extends Controller
 {
     public function assign() {
@@ -19,14 +17,22 @@ class BazarController extends Controller
     }
 
     public function assignMember(Request $request) {
-        $request->validate([
+        $validate = $request->validate([
             'member_id' => 'required|integer|max:8',
             'date_from' => 'required|date|date-format:Y-m-d',
-            'date_to' => 'required|date|date-format:Y-m-d'
+            'date_to' => 'required|date|date-format:Y-m-d|'
         ]);
+
+        if ($request->date_from > $request->date_to) {
+            return redirect()
+                ->back()
+                ->with('error','Till date must be greater')
+                ->withInput();
+        }
+
         $bazar = new Bazar();
         $bazar->assigned_user = $request->member_id;
-        $bazar->assigned_by = \Illuminate\Support\Facades\Auth::user()->id;
+        $bazar->assigned_by = Auth::user()->id;
         $bazar->date_from = $request->date_from;
         $bazar->date_to = $request->date_to;
         $bazar->save();

@@ -5,7 +5,7 @@
         </div>
     </form>
     <ul class="nav menu">
-        <li class=""><a href="index.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
+        <li class=""><a href=""><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
         <li class="parent ">
             <a href="#">
                 <span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> Members
@@ -91,8 +91,5 @@
                 </li>
             </ul>
         </li>
-        <li role="presentation" class="divider"></li>
-        <li><a href="login.html"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Login Page</a></li>
-    </ul>
 
 </div><!--/.sidebar-->
