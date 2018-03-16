@@ -26,3 +26,6 @@ Route::get('/register','MemberController@add');
 Route::get('/member/add','MemberController@add');
 Route::post('/member/add','MemberController@addMember');
 
+Route::get('/bazar/assign','BazarController@assign');
+Route::post('/bazar/assign','BazarController@assignMember');
+
