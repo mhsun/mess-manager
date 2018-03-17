@@ -34,7 +34,7 @@
                             <td>{{ $member->join_date }}</td>
                             <td>{{ $member->leave_date != null ? $member->leave_date : "Present" }}</td>
                             <td>
-                                <a href="{{ url('member/bill-list/'.$member->id) }}" class="btn btn-success btn-xs" title="Monthly Bill"><i class="fa fa-clipboard-list"></i></a>
+                                <a href="{{ url('member/show-bill/'.$member->id) }}" class="btn btn-success btn-xs" title="Monthly Bill"><i class="fa fa-clipboard-list"></i></a>
                                 <a href="{{ url('member/edit/'.$member->id) }}" class="btn btn-warning btn-xs" title="Edit Member"><i class="fa fa-edit"></i></a>
                                 @if ($member->leave_date == null)
                                 <a href="{{ url('member/make-leave/'.$member->id) }}" class="btn btn-info btn-xs" title="Make Member Leave"><i class="fa fa-arrow-circle-right"></i></a>

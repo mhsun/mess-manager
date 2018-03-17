@@ -33,6 +33,7 @@ Route::get('/member/bill-list/{id}','MemberController@showBillList');
 Route::get('/member/delete/{id}','MemberController@deleteMember');
 Route::get('/member/make-leave/{id}','MemberController@showLeaveForm');
 Route::post('/member/make-leave/{id}','MemberController@leaveMember');
+Route::get('/member/show-bill/{id}','MemberController@showMemberBill');
 
 Route::get('/bazar/assign','BazarController@assign');
 Route::post('/bazar/assign','BazarController@assignMember');

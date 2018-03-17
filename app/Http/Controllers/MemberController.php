@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\MonthlyBill;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Session;
@@ -106,7 +107,10 @@ class MemberController extends Controller
         return redirect('/member/manage')->with('message','Member leave made successfully');
     }
 
-    public function showBillList($id) {
-
+    public function showMemberBill($id) {
+        $data['memberBill'] = MonthlyBill::where('user_id',$id)->get();
+        return view('admin.user.bill_list',$data);
     }
+
+
 }

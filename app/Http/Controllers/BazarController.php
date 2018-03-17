@@ -17,7 +17,7 @@ class BazarController extends Controller
     }
 
     public function assignMember(Request $request) {
-        $validate = $request->validate([
+        $request->validate([
             'member_id' => 'required|integer|max:8',
             'date_from' => 'required|date|date-format:Y-m-d',
             'date_to' => 'required|date|date-format:Y-m-d|'
@@ -30,6 +30,13 @@ class BazarController extends Controller
                 ->withInput();
         }
 
+        $doExist = Bazar::where('date_from','>=', $request->date_from)->where('date_to','<=', $request->date_to)->get();
+        if (count($doExist) > 0) {
+            return redirect()
+                ->back()
+                ->with('error','A member is already assigned between the date entered')
+                ->withInput();
+        }
         $bazar = new Bazar();
         $bazar->assigned_user = $request->member_id;
         $bazar->assigned_by = \Illuminate\Support\Facades\Auth::user()->id;
@@ -53,4 +60,5 @@ class BazarController extends Controller
 
         return view('admin.bazar.bazar_list',$data);
     }
+
 }
