@@ -8,8 +8,12 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">Form Elements</div>
-                    <span class="text-center" style="text-align: center; color: green;">{{ Session::get('message') ? Session::get('message') : "" }}</span>
-                    <span class="text-center" style="text-align: center; color: red;">{{ Session::get('error') ? Session::get('error') : "" }}</span>
+                    @if (Session::get('message'))
+                    <p class="text-center" style="color: green;">{{ Session::get('message')}}</p>
+                    @endif
+                    @if (Session::get('error'))
+                        <p class="text-center" style="color: red;">{{ Session::get('error') }}</p>
+                    @endif
                     <div class="panel-body">
                         <div class="col-md-offset-3 col-md-6">
                             {!! Form::open() !!}

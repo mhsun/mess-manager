@@ -9,8 +9,12 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Member's List</div>
                 <div class="panel-body">
-                    <span class="text-center" style="text-align: center; color: green;">{{ Session::get('message') ? Session::get('message') : "" }}</span>
-                    <span class="text-center" style="text-align: center; color: red;">{{ Session::get('error') ? Session::get('error') : "" }}</span>
+                    @if (Session::get('message'))
+                        <p class="text-center" style="color: green;">{{ Session::get('message')}}</p>
+                    @endif
+                    @if (Session::get('error'))
+                        <p class="text-center" style="color: red;">{{ Session::get('error') }}</p>
+                    @endif
                     <table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
                         <thead>
                         <tr>

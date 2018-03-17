@@ -80,7 +80,30 @@ class MemberController extends Controller
     }
 
     public function deleteMember($id) {
+        User::where('id',$id)->delete();
+        return redirect()->back()->with('message','Record deleted successfully');
+    }
 
+    public function showLeaveForm($id) {
+        $data['memberInfo'] = User::find($id);
+        $data['title'] = 'leave';
+        return view('admin.user.leave_form',$data);
+    }
+
+    public function leaveMember(Request $request, $id) {
+        $request->validate([
+            'leave_date' => "required|date|date-format:Y-m-d"
+        ]);
+        $memberInfo = User::find($id);
+        if ($request->leave_date < $memberInfo->join_date) {
+            return redirect()->back()->with('error','Leave date can\'t be less than join date');
+        }
+
+        User::where('id',$id)->update([
+            'leave_date' => $request->leave_date,
+            'status' => 0
+        ]);
+        return redirect('/member/manage')->with('message','Member leave made successfully');
     }
 
     public function showBillList($id) {

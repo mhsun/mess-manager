@@ -32,10 +32,25 @@ class BazarController extends Controller
 
         $bazar = new Bazar();
         $bazar->assigned_user = $request->member_id;
-        $bazar->assigned_by = Auth::user()->id;
+        $bazar->assigned_by = \Illuminate\Support\Facades\Auth::user()->id;
         $bazar->date_from = $request->date_from;
         $bazar->date_to = $request->date_to;
         $bazar->save();
         return redirect()->back()->with('message','Member assigned successfully');
+    }
+
+    public function manageAssignedMembers() {
+        $bazarDetails = Bazar::orderBy('id','DESC')->get();
+        $assignerDetails = [];
+        $memberDetails = [];
+        foreach ($bazarDetails as $bazar) {
+            $memberDetails[] = json_decode(User::where('id',$bazar->assigned_user)->get());
+            $assignerDetails[] = json_decode(User::where('id',$bazar->assigned_by)->get());
+        }
+        $data['bazarDetails'] = $bazarDetails;
+        $data['memberDetails'] = $memberDetails;
+        $data['assignerDetails'] = $assignerDetails;
+
+        return view('admin.bazar.bazar_list',$data);
     }
 }

@@ -15,10 +15,10 @@ class CreateMonthlyBillsTable extends Migration
     {
         Schema::create('monthly_bills', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('month',50);
             $table->integer('house_rent');
-            $table->integer('others');
+            $table->integer('utility_bill');
             $table->integer('food_bill');
-            $table->integer('status');
             $table->integer('due_amount');
         });
     }

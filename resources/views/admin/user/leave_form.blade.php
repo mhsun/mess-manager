@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('title')
-    Edit Member
+    Leave Member
 @endsection
 @section('main_content')
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -23,32 +23,18 @@
                                 <span style="color: red;">{{ $errors->first('name') }}</span>
                             </div>
                             <div class="form-group">
-                                <label>Phone</label>
-                                <input class="form-control" placeholder="Please enter phone here" name="phone" value="{{ $memberInfo->phone }}">
-                                <span style="color: red;">{{ $errors->first('phone') }}</span>
-                            </div>
-                            <div class="form-group">
                                 <label>Join Date</label>
-                                <input class="form-control" placeholder="Please follow the format(dd-mm-YYYY)" name="join_date" value="{{ $memberInfo->join_date }}">
-                                <span style="color: red;">{{ $errors->first('join_date') }}</span>
+                                <input class="form-control" placeholder="Please follow the format(dd-mm-YYYY)" name="leave_date" value="{{ date('Y-m-d') }}">
+                                <span style="color: red;">{{ $errors->first('leave_date') }}</span>
                             </div>
                             <div class="form-group">
-                                <label>User Type</label>
-                                <select class="form-control" name="user_type">
-                                    <option value="">--Select a type--</option>
-                                    <option value="1" {{ $memberInfo->user_type == 1 ? "selected" : "" }}>Mess Member</option>
-                                    <option value="2" {{ $memberInfo->user_type == 2 ? "selected" : "" }}>Sub Admin</option>
-                                </select>
-                                <span style="color: red;">{{ $errors->first('user_type') }}</span>
-                            </div>
-                            <div class="form-group">
-                                <input class="btn btn-primary pull-right" type="submit" value="Update Member">
+                                <input class="btn btn-primary pull-right" type="submit" value="Leave Member">
                             </div>
                             </form>
                         </div>
                     </div>
                 </div><!-- /.col-->
             </div><!-- /.row -->
-        </div>
+
         </div><!--/.main-->
 @endsection
